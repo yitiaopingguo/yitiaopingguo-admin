@@ -46,7 +46,7 @@ export default {
             {
               menuid: 2,
               icon: 'icon-cat-skuQuery',
-              menuname: '商品管理',
+              menuname: '文章列表',
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null

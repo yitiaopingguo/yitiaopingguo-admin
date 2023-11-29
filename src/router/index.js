@@ -8,7 +8,7 @@ import index from '@/views/index';
 /**
  * 基础菜单
  */
-// 商品管理
+// 文章列表
 import Goods from '@/views/goods/Goods';
 /**
  * 系统管理
@@ -61,7 +61,7 @@ export default new Router({
         iconCls: 'el-icon-tickets',
         children: [{
             path: '/goods/Goods',
-            name: '商品管理',
+            name: '文章列表',
             component: Goods,
             meta: {
                 requireAuth: true
