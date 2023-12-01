@@ -3,7 +3,7 @@
     <el-form label-position="left" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="demo-ruleForm login-container">
       <h3 class="title">用户登录</h3>
       <el-form-item prop="username">
-        <el-input type="text" v-model="ruleForm.username" auto-complete="off" placeholder="账号"></el-input>
+        <el-input  disabled type="text" v-model="ruleForm.username" auto-complete="off" placeholder="账号"></el-input>
       </el-form-item>
       <el-form-item prop="password">
         <el-input type="password" v-model="ruleForm.password" auto-complete="off" placeholder="密码"></el-input>
@@ -19,36 +19,42 @@ import { login } from '../api/userMG'
 import {  getCookie, } from '../utils/util'
 export default {
   name: 'login',
+
   data() {
+    var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else if (value != '12138') {
+          callback(new Error('密码不正确'));
+        }else {
+          if (this.ruleForm.password !== '') {
+            this.$refs.ruleForm.validateField('password');
+          }
+          callback();
+        }
+      };
     return {
       //定义loading默认为false
       logining: false,
       // 记住密码
       rememberpwd: false,
       ruleForm: {
-        //username和password默认为空
-        username: '',
+        //password默认为空
+        username: 'admin',
         password: '',
-        randomStr: '',
       },
       //rules前端验证
       rules: {
-        username: [{ required: true, message: '请输入账号', trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+        password: [{ validator: validatePass, trigger: 'blur' }],
       }
     }
   },
   // 创建完毕状态(里面是操作)
   created() {
-    this.$message({
-      message: '账号密码及验证码不为空即可',
-      type: 'success'
-    })
     // 获取存在本地的用户名密码
     this.getuserpwd()
 
   },
-  // 里面的函数只有调用才会执行
   methods: {
     // 获取用户名密码
     getuserpwd() {
@@ -63,14 +69,13 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.logining = true
-          // 测试通道，不为空直接登录
           setTimeout(() => {
             this.logining = false
             this.$store.commit('login', 'true')
             this.$router.push({ path: '/goods/Goods' })
           }, 1000)
         } else {
-          this.$message.error('请输入用户名密码！')
+          this.$message.error('请输入密码！')
           this.logining = false
           return false
         }

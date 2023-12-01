@@ -49,20 +49,6 @@ export const ModuleSave = (params) => { return req("post", "/api/Module/save", p
 export const ModuleDelete = (params) => { return axios.delete("/api/Module/delete?ids=" + params + "&token=" + localStorage.getItem('logintoken')).then(res => res.data) };
 
 /**
- * 角色管理
- **/
-// 角色管理-获取角色列表
-export const roleList = (params) => { return req("post", "/api/Role/list", params) };
-// 角色管理-保存（添加编辑）
-export const roleSave = (params) => { return req("post", "/api/Role/save", params) };
-// 角色管理-删除角色
-export const roleDelete = (params) => { return axios.delete("/api/Role/delete?ids=" + params + "&token=" + localStorage.getItem('logintoken')).then(res => res.data) };
-// 角色管理-菜单权限（获取）
-export const RoleRightTree = (params) => { return axios.get("/api/RoleRight/tree/" + params + "?token=" + localStorage.getItem('logintoken')) };
-// 角色管理-菜单权限（保存）
-export const RoleRightSave = (params) => { return req("post", "/api/RoleRight/save", params) };
-
-/**
  * 系统环境变量
  **/
 // 系统环境变量-获取系统环境变量列表
@@ -72,16 +58,3 @@ export const variableSave = (params) => { return req("post", "/api/Variable/save
 // 系统环境变量-删除系统环境变量
 export const variableDelete = (params) => { return axios.delete("/api/Variable/delete?ids=" + params + "&token=" + localStorage.getItem('logintoken')).then(res => res.data) };
 
-/**
- * 权限管理
- **/
-// 权限管理-获取权限列表
-export const permissionList = (params) => { return req("post", "/api/Permission/list", params) };
-// 权限管理-保存权限
-export const ermissionSave = (params) => { return req("post", "/api/Permission/save", params) };
-// 权限管理-删除权限
-export const ermissionDelete = (params) => { return axios.delete("/api/Permission/delete?ids=" + params + "&token=" + localStorage.getItem('logintoken')).then(res => res.data) };
-// 权限管理-获取权限
-export const roleDropDown = () => { return axios.get("/api/Role/dropDown/all?&token=" + localStorage.getItem('logintoken')).then(res => res.data) };
-// 权限管理-配置权限
-export const RolePermission = (params) => { return req("post", "/api/RolePermission/save", params) };

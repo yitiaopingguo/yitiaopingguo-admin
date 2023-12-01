@@ -50,7 +50,23 @@ export default {
               hasThird: 'N',
               url: 'goods/Goods',
               menus: null
-            }
+            },
+            {
+              menuid: 3,
+              icon: 'icon-cat-skuQuery',
+              menuname: '项目列表',
+              hasThird: 'N',
+              url: 'project/index',
+              menus: null
+            },
+            {
+              menuid: 4,
+              icon: 'icon-cat-skuQuery',
+              menuname: '留言列表',
+              hasThird: 'N',
+              url: 'message/index',
+              menus: null
+            },
           ]
         },
         {
@@ -76,30 +92,6 @@ export default {
               url: 'system/Module',
               menus: null
             },
-            {
-              menuid: 73,
-              icon: 'icon-news-manage',
-              menuname: '角色管理',
-              hasThird: 'N',
-              url: 'system/Role',
-              menus: null
-            },
-            {
-              menuid: 75,
-              icon: 'icon-promotion-manage',
-              menuname: '系统环境变量',
-              hasThird: 'N',
-              url: 'system/Variable',
-              menus: null
-            },
-            {
-              menuid: 76,
-              icon: 'icon-cms-manage',
-              menuname: '权限管理',
-              hasThird: 'N',
-              url: 'system/Permission',
-              menus: null
-            }
           ]
         },
         {

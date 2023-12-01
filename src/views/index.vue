@@ -30,7 +30,6 @@
   </el-container>
 </template>
 <script>
-// 导入组件
 import navcon from '../components/navcon.vue'
 import leftnav from '../components/leftnav.vue'
 export default {
@@ -41,7 +40,6 @@ export default {
       showtype: false
     }
   },
-  // 注册组件
   components: {
     navcon,
     leftnav

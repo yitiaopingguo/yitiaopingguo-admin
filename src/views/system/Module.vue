@@ -114,9 +114,6 @@ export default {
     this.getmenu()
   },
 
-  /**
-   * 里面的方法只有被调用才会执行
-   */
   methods: {
     // 获取数据
     getdata() {
@@ -327,5 +324,4 @@ export default {
   width: 100%;
 }
 </style>
- 
- 
+
