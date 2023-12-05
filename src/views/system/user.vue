@@ -52,7 +52,8 @@
       </el-table-column>
       <el-table-column align="center" sortable prop="isLock" label="状态" min-width="50">
         <template slot-scope="scope">
-          <el-switch v-model="scope.row.isLock=='N'?nshow:fshow" active-color="#13ce66" inactive-color="#ff4949" @change="editType(scope.$index, scope.row)">
+          <el-switch v-if="scope.row.isLock=='N'" v-model="nshow" active-color="#13ce66" inactive-color="#ff4949" @change="editType(scope.$index, scope.row)"></el-switch>
+          <el-switch v-else v-model="fshow" active-color="#13ce66" inactive-color="#ff4949" @change="editType(scope.$index, scope.row)">
           </el-switch>
         </template>
       </el-table-column>

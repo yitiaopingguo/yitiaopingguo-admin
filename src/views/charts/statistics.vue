@@ -1,15 +1,13 @@
 /**
 * 图表界面
-*/ 
+*/
 <template>
-  <!-- 组件主盒子 -->
   <div class="stbox">
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>数据可视化</el-breadcrumb-item>
     </el-breadcrumb>
-    <!-- 搜索，切换 -->
     <el-row :gutter="23">
       <el-col :span="18">
         <div class="stbgc">
@@ -88,7 +86,7 @@ export default {
     return {
       machineNo: '',
       type: 'day',
-      //  销售总笔数 
+      //  销售总笔数
       SCEoption: {
         tooltip: {
           trigger: 'item',
@@ -181,7 +179,7 @@ export default {
           }
         }]
       },
-      //  销售总金额 
+      //  销售总金额
       SUMoption: {
         tooltip: {
           trigger: 'item',
