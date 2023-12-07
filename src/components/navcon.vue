@@ -1,6 +1,3 @@
-/**
-* 头部菜单
-*/
 <template>
   <el-menu class="el-menu-demo" mode="horizontal" background-color="#334157" text-color="#fff" active-text-color="#fff">
     <div class="header-left"><img class="showimg" :src="collapsed?imgsq:imgshow" @click="toggle(collapsed)"></div>

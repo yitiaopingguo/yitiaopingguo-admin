@@ -1,10 +1,6 @@
-/**
-* 模版
-**/ 
-
 <template>
     <div>
-        
+
     </div>
 </template>
 
@@ -17,7 +13,7 @@ export default {
   name: "template",
   // 模块数据
   data() {
-    //数据  
+    //数据
     return {};
   },
   // 注册组件
