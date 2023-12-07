@@ -21,9 +21,9 @@
   </el-menu>
 </template>
 <script>
-import { menu } from '../api/userMG'
+// import { menu } from '../api/userMG'
 export default {
-  name: 'leftnav',
+  name: 'leftNav',
   data() {
     return {
       collapsed: false,

@@ -3,22 +3,23 @@
 */
 <template>
   <el-menu class="el-menu-demo" mode="horizontal" background-color="#334157" text-color="#fff" active-text-color="#fff">
-    <el-button class="buttonimg">
-      <img class="showimg" :src="collapsed?imgsq:imgshow" @click="toggle(collapsed)">
-    </el-button>
-    <el-submenu index="2" class="submenu">
+    <div class="header-left"><img class="showimg" :src="collapsed?imgsq:imgshow" @click="toggle(collapsed)"></div>
+    <div class="header-right">
+        <el-submenu index="2" class="submenu">
       <!-- <template slot="title">{{user.userRealName}}</template> -->
       <template slot="title">超级管理员</template>
       <el-menu-item index="2-1">设置</el-menu-item>
-      <el-menu-item @click="content()" index="2-2">个人中心</el-menu-item>
+      <el-menu-item index="2-2">个人中心</el-menu-item>
       <el-menu-item @click="exit()" index="2-3">退出</el-menu-item>
     </el-submenu>
+    </div>
+
   </el-menu>
 </template>
 <script>
-import { loginout } from '../api/userMG'
+// import { loginout } from '../api/userMG'
 export default {
-  name: 'navcon',
+  name: 'navconPage',
   data() {
     return {
       collapsed: true,
@@ -92,13 +93,16 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   border: none;
 }
-.submenu {
-  float: right;
+.el-menu-demo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.buttonimg {
-  height: 60px;
-  background-color: transparent;
-  border: none;
+.header-left{
+    flex: 1;
+}
+.header-right{
+    width: 120px;
 }
 .showimg {
   width: 26px;

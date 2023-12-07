@@ -59,7 +59,7 @@ import {
   ModuleNodes,
   ModuleSave,
   ModuleDelete
-} from '../../api/userMG'
+} from '../../api/userMg'
 export default {
   data() {
     return {

@@ -1,6 +1,3 @@
-/**
- * 基础菜单 项目列表
- */
 <template>
   <div>
     <!-- 面包屑导航 -->
@@ -46,7 +43,7 @@
 
 <script>
 import Pagination from '../../components/Pagination'
-import Dialog from './components/dialog.vue'
+import Dialog from './components/dialogPage.vue'
 export default {
   data() {
     return {

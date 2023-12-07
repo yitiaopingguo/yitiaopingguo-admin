@@ -1,8 +1,5 @@
-/**
- * 基础菜单 文章列表
- */
 <template>
-  <div>
+  <div v-if="!editorShow">
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -40,13 +37,15 @@
     </el-table>
     <!-- 分页组件 -->
     <Pagination v-bind:child-msg="pageparm" @callFather="callFather"></Pagination>
-    <Dialog ref="dialogRef"></Dialog>
+    <!-- <Dialog ref="dialogRef"></Dialog> -->
   </div>
+  <Editor v-else></Editor>
 </template>
 
 <script>
 import Pagination from '../../components/Pagination'
-import Dialog from './components/dialog.vue'
+// import Dialog from './components/dialogPage.vue'
+import Editor from '../../components/editor.vue'
 export default {
   data() {
     return {
@@ -83,13 +82,15 @@ export default {
         currentPage: 1,
         pageSize: 10,
         total: 10
-      }
+      },
+      editorShow:false
     }
   },
   // 注册组件
   components: {
     Pagination,
-    Dialog
+    // Dialog,
+    Editor
   },
 
   created() {
@@ -196,7 +197,9 @@ export default {
     },
     //显示编辑界面
     handleEdit( ) {
-      this.$refs.dialogRef.handleDialog(true,'添加')
+    //   this.$refs.dialogRef.handleDialog(true,'添加')
+        // this.editorShow = true
+        this.$router.push({ path: '/editor' })
     },
   }
 }

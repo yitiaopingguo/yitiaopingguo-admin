@@ -79,9 +79,9 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import Chart from 'echarts'
+import * as Chart from 'echarts';
 export default {
-  name: "welcome",
+  name: "echartsPage",
   data() {
     return {
       machineNo: '',

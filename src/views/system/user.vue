@@ -135,7 +135,7 @@ import {
   UserDeptSave,
   UserDeptdeptTree,
   UserChangeDept
-} from '../../api/userMG'
+} from '../../api/userMg'
 import Pagination from '../../components/Pagination'
 export default {
   data() {
