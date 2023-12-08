@@ -1,111 +1,106 @@
 {
-    "name": "vue2-template",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+  "name": "vue2-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@bytemd/plugin-breaks": "^1.21.0",
+    "@bytemd/plugin-frontmatter": "^1.21.0",
+    "@bytemd/plugin-gemoji": "^1.21.0",
+    "@bytemd/plugin-gfm": "^1.21.0",
+    "@bytemd/plugin-highlight": "^1.21.0",
+    "@bytemd/vue": "^1.21.0",
+    "axios": "^1.5.1",
+    "babel-plugin-component": "^1.1.1",
+    "core-js": "^3.8.3",
+    "echarts": "^5.4.3",
+    "element-ui": "^2.15.14",
+    "node-sass": "^4.12.0",
+    "nprogress": "^0.2.0",
+    "sass-loader": "^8.0.2",
+    "vue": "^2.6.14",
+    "vue-router": "^3.6.5",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "dependencies": {
-        "@bytemd/plugin-breaks": "^1.21.0",
-        "@bytemd/plugin-frontmatter": "^1.21.0",
-        "@bytemd/plugin-gemoji": "^1.21.0",
-        "@bytemd/plugin-gfm": "^1.21.0",
-        "@bytemd/plugin-highlight": "^1.21.0",
-        "@bytemd/vue": "^1.21.0",
-        "axios": "^1.5.1",
-        "babel-plugin-component": "^1.1.1",
-        "core-js": "^3.8.3",
-        "echarts": "^5.4.3",
-        "element-ui": "^2.15.14",
-        "less": "^4.2.0",
-        "less-loader": "^11.1.3",
-        "mathjs": "^12.0.0",
-        "node-sass": "^4.12.0",
-        "nprogress": "^0.2.0",
-        "ol": "^8.1.0",
-        "sass-loader": "^8.0.2",
-        "three": "^0.158.0",
-        "vue": "^2.6.14",
-        "vue-router": "^3.6.5",
-        "vuex": "^3.6.2"
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
     },
-    "devDependencies": {
-        "@babel/core": "^7.12.16",
-        "@babel/eslint-parser": "^7.12.16",
-        "@vue/cli-plugin-babel": "~5.0.0",
-        "@vue/cli-plugin-eslint": "~5.0.0",
-        "@vue/cli-service": "~5.0.0",
-        "eslint": "^7.32.0",
-        "eslint-plugin-vue": "^8.0.3",
-        "vue-template-compiler": "^2.6.14"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "parserOptions": {
-            "parser": "@babel/eslint-parser"
-        },
-        "rules": {
-            "no-console": "off",
-            "generator-star-spacing": "off",
-            "no-mixed-operators": 0,
-            "vue/max-attributes-per-line": [
-              2,
-              {
-                "singleline": 5,
-                "multiline": {
-                  "max": 1,
-                  "allowFirstLine": false
-                }
-              }
-            ],
-            "vue/attribute-hyphenation": 0,
-            "vue/html-self-closing": 0,
-            "vue/component-name-in-template-casing": 0,
-            "vue/html-closing-bracket-spacing": 0,
-            "vue/singleline-html-element-content-newline": 0,
-            "vue/no-unused-components": 0,
-            "vue/multiline-html-element-content-newline": 0,
-            "vue/no-use-v-if-with-v-for": 0,
-            "vue/html-closing-bracket-newline": 0,
-            "vue/no-parsing-error": 0,
-            "no-tabs": 0,
-            "no-unused-vars":"warn",
-            "quotes": [
-              2,
-              "single",
-              {
-                "avoidEscape": true,
-                "allowTemplateLiterals": true
-              }
-            ],
-            "semi": [
-              2,
-              "never",
-              {
-                "beforeStatementContinuationChars": "never"
-              }
-            ],
-            "no-delete-var": 2,
-            "prefer-const": [
-              2,
-              {
-                "ignoreReadBeforeAssign": false
-              }
-            ]
+    "rules": {
+      "no-console": "off",
+      "generator-star-spacing": "off",
+      "no-mixed-operators": 0,
+      "vue/max-attributes-per-line": [
+        2,
+        {
+          "singleline": 5,
+          "multiline": {
+            "max": 1,
+            "allowFirstLine": false
           }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead"
-    ]
+        }
+      ],
+      "vue/attribute-hyphenation": 0,
+      "vue/html-self-closing": 0,
+      "vue/component-name-in-template-casing": 0,
+      "vue/html-closing-bracket-spacing": 0,
+      "vue/singleline-html-element-content-newline": 0,
+      "vue/no-unused-components": 0,
+      "vue/multiline-html-element-content-newline": 0,
+      "vue/no-use-v-if-with-v-for": 0,
+      "vue/html-closing-bracket-newline": 0,
+      "vue/no-parsing-error": 0,
+      "no-tabs": 0,
+      "no-unused-vars": "warn",
+      "quotes": [
+        2,
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ],
+      "semi": [
+        2,
+        "never",
+        {
+          "beforeStatementContinuationChars": "never"
+        }
+      ],
+      "no-delete-var": 2,
+      "prefer-const": [
+        2,
+        {
+          "ignoreReadBeforeAssign": false
+        }
+      ]
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
