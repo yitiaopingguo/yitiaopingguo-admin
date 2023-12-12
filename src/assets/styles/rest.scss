@@ -114,3 +114,8 @@ blockquote:after {
       background: transparent;
     }
   }
+/* 设置全局样式背景色 */
+:root {
+    /* 背景色 */
+    --theme_bg_color: #1f2d3d;
+  }

@@ -146,7 +146,7 @@ export default {
   padding: 0px;
 }
 .el-menu-bg {
-  background-color: #1f2d3d !important;
+  background-color: var(--theme_bg_color) !important;
 }
 .el-menu {
   border: none;
