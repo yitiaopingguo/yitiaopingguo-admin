@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcf.mapper.ArticleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lcf.entity.Article">
+        <id column="article_id" property="articleId" />
+        <result column="article_user_id" property="articleUserId" />
+        <result column="article_title" property="articleTitle" />
+        <result column="article_content" property="articleContent" />
+        <result column="article_view_count" property="articleViewCount" />
+        <result column="article_comment_count" property="articleCommentCount" />
+        <result column="article_dianzan_count" property="articleDianzanCount" />
+        <result column="article_update_time" property="articleUpdateTime" />
+        <result column="article_create_time" property="articleCreateTime" />
+        <result column="article_summary" property="articleSummary" />
+        <result column="article_th_img" property="articleThImg" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        article_id, article_user_id, article_title, article_content, article_view_count, article_comment_count, article_dianzan_count, article_update_time, article_create_time, article_summary, article_th_img
+    </sql>
+
+    <select id="pageCC" resultType="com.lcf.entity.Article">
+        select * from article ${ew.customSqlSegment}
+    </select>
+
+</mapper>
