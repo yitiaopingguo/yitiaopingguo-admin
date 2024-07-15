@@ -1,0 +1,15 @@
+.M-table{
+    margin-top: 10px;
+    .search-con{
+        margin: 10px 0;
+        .search-space{
+            padding-right: 24px;
+        }
+    }
+    .table-title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+}

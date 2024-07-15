@@ -1,0 +1,34 @@
+.M-entry {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  .M-public {
+    display: flex;
+    width: 100%;
+    .M-left {
+      // flex: 1;
+    }
+    .M-right {
+      flex: 1;
+    }
+  }
+  .main-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    background: #f0f2f5;
+    width: 100%;
+    height: calc(100vh - 65px);
+    padding: 5px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    .content {
+      background: #fff;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+  }
+}
