@@ -17,3 +17,6 @@ Logging:
   level:
     com.lcf: debug
 
+
+images:
+  path: D:/images/

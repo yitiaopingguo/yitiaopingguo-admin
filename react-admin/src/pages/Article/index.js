@@ -37,7 +37,7 @@ function Article() {
       width: 200,
       render: (_, record) => (
         <Space size="middle">
-          <Button type="primary">编辑</Button>
+          <Button type="primary" onClick={() => handleUpdate(record.key)}>编辑</Button>
           <Button type="primary" danger onClick={() => handleDel(record.key)}>
             删除
           </Button>
@@ -67,8 +67,6 @@ function Article() {
         pageSize: 10,
         param: {
           articleTitle: titleValue,
-          // title: titleValue,
-          // tag: tagValue,
         },
       };
       const res = await getPageData(data);
@@ -115,6 +113,11 @@ function Article() {
     navigate("/Article/detail");
   };
 
+  //编辑
+  const handleUpdate = (id) => {
+    navigate(`/Article/detail?id=${id}`);
+  };
+
   //删除
   const handleDel = async (id) => {
     const res = await deleteArticle(id);
@@ -125,6 +128,12 @@ function Article() {
       messageApi.open({ type: "error", content: "删除失败" });
     }
   };
+
+  //搜索
+  const handleSelect = () => {
+    fetchGetPageData();
+  };
+  
 
   return (
     <div className="M-table">
@@ -153,7 +162,7 @@ function Article() {
             </div>
           </Col>
           <Col span={8}>
-            <Button type="primary" onClick={fetchGetPageData}>
+            <Button type="primary" onClick={handleSelect}>
               查询
             </Button>
           </Col>

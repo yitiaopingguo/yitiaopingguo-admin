@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef ,useState} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./quilSize.css";
 
-const RichText = ({ value = "", onChange }) => {
+const RichText = ({ text, onChange }) => {
   const quillRef = useRef(null);
+  const [content, setContent] = useState(text || '');  
   //富文本modules配置
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"], // 加粗，斜体，下划线，删除线
@@ -33,26 +34,24 @@ const RichText = ({ value = "", onChange }) => {
   };
 
   useEffect(() => {
+    
     if (quillRef.current) {
+      console.log(8888);
       const quill = new Quill(quillRef.current, options);
       // 设置初始值
-      if (value) {
-        quill.setContents(Quill.import("html", value));
+      if (content) {
+        quill.clipboard.dangerouslyPasteHTML(content);
       }
       // 监听文本变化
       quill.on("text-change", function (delta, oldDelta, source) {
         if (source === "user") {
           const content = quill.root.innerHTML;
+          setContent(content);  
           onChange(content);
         }
       });
-      return () => {  
-        if (quill) {  
-          quill.destroy();  
-        }  
-      };  
     }
-    
+   
   }, []);
 
   return (

@@ -42,6 +42,20 @@ public class ArticleController {
     @PostMapping("/update")
     public Result update(@RequestBody Article article) { return articleService.updateById(article)?Result.suc():Result.fail();}
 
+    //根据ID查询一条数据
+    @GetMapping("/getById")
+    public Result getById(@RequestParam String id) {
+        Article article = articleService.getById(id);
+        if (article != null) {
+            // 查询成功，返回成功的结果和查询到的数据
+            return Result.suc(article);
+        } else {
+            // 查询失败（比如没有找到对应的数据），返回失败的结果
+            return Result.fail();
+        }
+    }
+
+
     //查询
     @PostMapping("/listPage")
     public Result listPage(@RequestBody QueryPageParam query){
@@ -56,6 +70,10 @@ public class ArticleController {
         if(StringUtils.isNotBlank(articleTitle) && !"null".equals(articleTitle)){
             lambdaQueryWrapper.like(Article::getArticleTitle,articleTitle);
         }
+
+        // 添加排序条件，按articleId降序排列
+        lambdaQueryWrapper.orderByDesc(Article::getArticleId);
+
 
         IPage result = articleService.pageCC(page,lambdaQueryWrapper);
         return Result.suc(result.getRecords(),result.getTotal());

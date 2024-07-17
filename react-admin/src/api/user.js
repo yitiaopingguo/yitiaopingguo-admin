@@ -66,6 +66,22 @@ export function deleteArticle(data) {
   return request({ url: `/article/del?id=${data}`, method: "get" ,});
 }
 
+//新增文章
+export function saveArticle(data) {
+  return request({ url: `/article/save`, method: "post" ,data});
+}
+
+//根据ID获得详情
+export function getByIdArticle(data) {
+  return request({ url: `/article/getById?id=${data}`, method: "get"});
+}
+
+//编辑文章
+export function updateArticle(data) {
+  return request({ url: `/article/update`, method: "post",data});
+}
+
+
 //文章搜索
 export function getArticlesSearch(search) {
   return request({ url: `/Blog/getArticlesSearch/${search}`, method: "get"});
@@ -79,5 +95,10 @@ export function getTagArticle(tag) {
 //test
 export function getTest(data) {
   return request({ url: "/test", method: "get", data });
+}
+
+//upload图片
+export function upload(data) {
+  return request({ url: "/common/upload", method: "post", data });
 }
 

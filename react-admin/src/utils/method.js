@@ -19,4 +19,10 @@ function deepCopy(obj, hash = new WeakMap()) {
     return copy;  
   }
 
+  //
+  export const getUrlParam = (name) => {
+    const results = new RegExp(`[?|&]${name}=([^&#]*)`).exec(window.location.href);
+    return results ? decodeURIComponent(results[1]) : null;
+  };
+
   export {deepCopy}
