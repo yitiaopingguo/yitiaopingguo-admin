@@ -58,5 +58,8 @@ public class Article implements Serializable {
     @ApiModelProperty(value = "缩略图")
     private String articleThImg;
 
+    @ApiModelProperty(value = "分类ID")
+    private Integer categoryId;
+
 
 }

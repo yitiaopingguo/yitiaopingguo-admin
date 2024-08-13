@@ -1,8 +1,8 @@
 import request from "../utils/require";
 
 //获取所有标签
-export function getAllHotTag() {
-  return request({ url: "/Blog/getAllHotTag", method: "get" });
+export function getAllCategory(data) {
+  return request({ url: "/category/listPage", method: "post",data });
 }
 
 //About页获取数据Api

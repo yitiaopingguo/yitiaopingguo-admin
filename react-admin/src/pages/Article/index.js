@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "../../components/Table";
 import { useNavigate } from "react-router-dom";
-import { getPageData, getAllHotTag, deleteArticle } from "@/api/user";
+import { getPageData, getAllCategory, deleteArticle } from "@/api/user";
 import { Space, Button, Input, Col, Row, Select, message } from "antd";
 import "./Article.scss";
 
@@ -57,7 +57,7 @@ function Article() {
     fetchGetPageData();
   }, [currPage]);
   useEffect(() => {
-    // fetchHotTags();
+    fetchHotTags();
   }, []);
 
   async function fetchGetPageData() {
@@ -91,12 +91,24 @@ function Article() {
   //获取标签列表
   async function fetchHotTags() {
     try {
-      const list = await getAllHotTag();
-      let listDate = [];
-      for (let i = 0; i < list.length; i++) {
-        listDate.push({ value: list[i], label: list[i] });
+      let data = {
+        pageNum: 1,
+        pageSize: 10,
+        param: {
+          categoryName: '',
+        },
+      };
+      const res = await getAllCategory(data);
+      if (res.code === 200) {
+        let listData=[]
+        for (let i = 0; i < res.data.length; i++) {
+          listData.push({
+            label: res.data[i].categoryName,
+            value: res.data[i].category,
+          });
+        }
+        setHotTags(listData);
       }
-      setHotTags(listDate);
     } catch (error) {
       // 错误处理
       console.error("Error fetching hot tags:", error);

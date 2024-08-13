@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "../../components/Table";
-import { getAllHotTag } from "@/api/user";
+import { getAllCategory } from "@/api/user";
 import { Space , Button} from "antd";
 import "./Message.scss";
 
@@ -26,13 +26,13 @@ function Message() {
     },
   ];
   useEffect(() => {
-    fetchHotTags();
+    // fetchHotTags();
   }, []); // 空数组表示这个effect只会在组件挂载时运行一次
 
   //获取标签列表
   async function fetchHotTags() {
     try {
-      const res = await getAllHotTag();
+      const res = await getAllCategory();
       let listDate = []
       for (let i = 0; i < res.data.length; i++) {
         listDate.push({ key: i + 1, name: res.data[i] });
