@@ -20,7 +20,7 @@ public class CommonUpload {
     private String basePath;
 
     @PostMapping("/upload")
-    public CommonDto<String> upload(MultipartFile file){
+    public Result upload(MultipartFile file){
         //原始文件名
         String originalFilename=file.getOriginalFilename();
         String suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -39,9 +39,7 @@ public class CommonUpload {
         }catch(IOException e){
             e.printStackTrace();
         }
-        CommonDto<String> commonDto=new CommonDto<>();
-        commonDto.setContent(fileName);
-        return commonDto;
+        return Result.suc(fileName);
     }
 
     @GetMapping("/download")

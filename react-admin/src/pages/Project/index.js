@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Table from "../../components/Table";
-import { getPageData , getAllHotTag } from "@/api/user";
+import { getProjectList } from "@/api/project";
 import { Space, Button, Input, Col, Row, Select } from "antd";
 import "./Project.scss";
 
 function Project() {
   const [pageData, setPageData] = useState(null); // 初始状态设置为null或空数组
-  const [hotTags, setHotTags] = useState(null); // 初始状态设置为null或空数组
   const [titleValue, setTitleValue] = useState('');
   const [tagValue, setTagValue] = useState(null); 
   const [totalPage, setTotalPage] = useState(null); 
@@ -14,17 +13,21 @@ function Project() {
   
   const columns = [
     {
-      title: "图片",
-      dataIndex: "articleThImg",
-      key: "articleThImg",
-      render: (text) => (
-        <img style={{ width: "50px", height: "50px" }} src={text} alt="" />
-      ),
+      title: "项目名",
+      dataIndex: "title",
+      key: "title",
+      render: (text) => <span>{text}</span>,
     },
     {
-      title: "文章名",
-      dataIndex: "articleTitle",
-      key: "articleTitle",
+      title: "描述",
+      dataIndex: "description",
+      key: "description",
+      render: (text) => <span>{text}</span>,
+    },
+    {
+      title: "创建时间",
+      dataIndex: "creattime",
+      key: "creattime",
       render: (text) => <span>{text}</span>,
     },
     {
@@ -33,7 +36,7 @@ function Project() {
       width: 200,
       render: (_, record) => (
         <Space size="middle">
-          <Button type="primary">新增</Button>
+          <Button type="primary">编辑</Button>
           <Button type="primary" danger>
             删除
           </Button>
@@ -41,59 +44,37 @@ function Project() {
       ),
     },
   ];
-  //选择标签select
-  const handleChange = (value) => {
-    setTagValue(value)
-  };
 // 这是父组件提供的回调函数，用于处理页码的改变  
 const handlePageChange = (newPage) => {  
   setCurrPage(newPage); 
   // fetchGetPageData()
 };  
   useEffect(() => {
-    fetchGetPageData()
+    getTableList()
   }, [currPage]);
-  useEffect(() => {
-    fetchHotTags()
-  }, []);
 
-  async function fetchGetPageData() {
+  async function getTableList() {
     try {
       let data = {
         currPage: currPage || 1,
         pageSize: 10,
         search: {
-          content: "",
           title: titleValue,
-          tag: tagValue
         },
       };
-      const res = await getPageData(data);
+      const res = await getProjectList(data);
       let listDate = [];
-      for (let i = 0; i < res.data.pageDataList.length; i++) {
+      for (let i = 0; i < res.data.length; i++) {
         listDate.push({
           key: i + 1,
-          articleTitle: res.data.pageDataList[i].articleTitle,
-          articleThImg: res.data.pageDataList[i].articleThImg,
+          title: res.data[i].title,
+          description: res.data[i].description,
+          creattime: res.data[i].creattime,
         });
       }
       setTotalPage(res.data.total)
       setPageData(listDate);
-    } catch (error) {
-      // 错误处理
-      console.error("Error fetching hot tags:", error);
-    }
-  }
-
-  //获取标签列表
-  async function fetchHotTags() {
-    try {
-      const res = await getAllHotTag();
-      let listDate = []
-      for (let i = 0; i < res.data.length; i++) {
-        listDate.push({ value: res.data[i], label: res.data[i] });
-      }
-      setHotTags(listDate);
+      console.log(listDate,3333333);
     } catch (error) {
       // 错误处理
       console.error("Error fetching hot tags:", error);
@@ -115,20 +96,7 @@ const handlePageChange = (newPage) => {
             </div>
           </Col>
           <Col span={8}>
-            <div className="search-space">
-              <Select
-                placeholder="请选择标签"
-                value={tagValue}
-                style={{
-                  width: "100%",
-                }}
-                onChange={handleChange}
-                options={hotTags}
-              />
-            </div>
-          </Col>
-          <Col span={8}>
-            <Button type="primary" onClick={fetchGetPageData}>查询</Button>
+            <Button type="primary" onClick={getTableList}>查询</Button>
           </Col>
         </Row>
       </div>

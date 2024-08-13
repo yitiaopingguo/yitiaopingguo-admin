@@ -62,13 +62,13 @@ function ArticleDetail() {
     if (id) {
       fetchData();
     }
-  }, [id]);
+  }, [form, id]);
 
   //提交表单
   const onFinish = async (values) => {
     values.articleThImg = articleThImg;
     if (id) {
-      values.articleId = id
+      values.articleId = id;
       const res = await updateArticle(values);
       if (res.code === 200) {
         messageApi.open({ type: "success", content: "编辑文章成功" });
@@ -100,7 +100,7 @@ function ArticleDetail() {
       return;
     }
     if (info.file.status === "done") {
-      let url = `http://localhost:8099/common/download?name=${info.file.response.content}`;
+      let url = `http://localhost:8099/common/download?name=${info.file.response.data}`;
       setLoading(false);
       setArticleThImg(url);
     }
