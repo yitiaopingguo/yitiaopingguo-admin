@@ -1,5 +1,5 @@
 import React from "react";
-import { Space, Table, Tag } from "antd";
+import { Table } from "antd";
 const columns = [];
 let data = [];
 
@@ -24,7 +24,7 @@ const App = ({
       dataSource={tableData.length ? tableData : data}
       pagination={{
         pageSize: pageSize, // 每页显示10条数据
-        current: currPage, // 当前页码为1
+        current: currPage || 1, // 当前页码为1
         total: totalPage, // 总数据条数为26
       }}
     />

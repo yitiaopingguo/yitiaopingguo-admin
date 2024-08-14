@@ -67,6 +67,7 @@ function Article() {
         pageSize: 10,
         param: {
           articleTitle: titleValue,
+          categoryId:tagValue,
         },
       };
       const res = await getPageData(data);
@@ -104,7 +105,7 @@ function Article() {
         for (let i = 0; i < res.data.length; i++) {
           listData.push({
             label: res.data[i].categoryName,
-            value: res.data[i].category,
+            value: res.data[i].categoryId,
           });
         }
         setHotTags(listData);
@@ -192,7 +193,7 @@ function Article() {
           tableData={pageData}
           totalPage={totalPage}
           currPage={currPage}
-          pageSize={10}
+          pageSize={pageData.length}
           onPageChange={handlePageChange}
         ></Table>
       )}

@@ -61,6 +61,7 @@ public class ArticleController {
     public Result listPage(@RequestBody QueryPageParam query){
         HashMap param = query.getParam();
         String articleTitle = (String)param.get("articleTitle");
+        Integer categoryId = (Integer) param.get("categoryId");
 
         Page<Article> page = new Page();
         page.setCurrent(query.getPageNum());
@@ -69,6 +70,9 @@ public class ArticleController {
         LambdaQueryWrapper<Article> lambdaQueryWrapper = new LambdaQueryWrapper();
         if(StringUtils.isNotBlank(articleTitle) && !"null".equals(articleTitle)){
             lambdaQueryWrapper.like(Article::getArticleTitle,articleTitle);
+        }
+        if(categoryId != null){
+            lambdaQueryWrapper.like(Article::getCategoryId,categoryId);
         }
 
         // 添加排序条件，按articleId降序排列
