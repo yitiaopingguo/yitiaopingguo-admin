@@ -7,12 +7,12 @@ export default defineConfig({
   //线上接口
   // server: {
   //   //端口号
-  //   port: 8002,
+  //   port: 8099,
   //   //允许自动打开浏览器
   //   open: true,
   //   //跨域代理
   //   proxy: {
-  //     "/api": "http://xx.com",
+  //     "/": "http://localhost:8099/",
   //   },
   //   //允许跨域
   //   cors: true,
@@ -20,8 +20,9 @@ export default defineConfig({
   //本地接口
   server: {
     proxy: {
-      "/api": "http://localhost:5080",
+      "/article": "http://localhost:8099/",
     },
+    cors: true,
   },
   //设置在src下可以使用@
   resolve: {  

@@ -26,4 +26,14 @@
         select * from article ${ew.customSqlSegment}
     </select>
 
+    <!-- 新增的SQL映射 -->
+    <select id="selectAllArticleTitles" resultType="java.lang.String">
+        SELECT article_title AS articleTitle FROM article
+    </select>
+
+    <!-- 新增的SQL映射 -->
+    <select id="selectArticlesWithCategories" resultType="com.lcf.entity.ArticleCategoryDTO">
+        SELECT article_id,article_title, category_id, category_name FROM article
+    </select>
+
 </mapper>

@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.lcf.entity.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import com.lcf.entity.ArticleCategoryDTO;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -18,5 +20,12 @@ import org.apache.ibatis.annotations.Param;
  */
 @Mapper
 public interface ArticleMapper extends BaseMapper<Article> {
-    IPage pageCC(IPage<Article> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+    IPage<Article> pageCC(IPage<Article> page, @Param(Constants.WRAPPER) Wrapper wrapper);
+
+    // 新增方法，查询所有articleTitle
+    List<String> selectAllArticleTitles();
+
+    //获取文章分类
+    List<ArticleCategoryDTO> selectArticlesWithCategories();
+
 }

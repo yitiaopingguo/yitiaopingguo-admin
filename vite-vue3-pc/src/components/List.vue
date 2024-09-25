@@ -23,7 +23,6 @@ import { ref } from 'vue'
 const props = defineProps({
     listData: Array,
 })
-console.log(props.listData, 333333);
 const emit = defineEmits(["goDetail"]);
 const arrList = ref([1, 2, 3, 4, 5])
 const handleClickList = () => {

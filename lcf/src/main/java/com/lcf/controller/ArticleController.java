@@ -8,11 +8,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lcf.common.QueryPageParam;
 import com.lcf.common.Result;
 import com.lcf.entity.Article;
+import com.lcf.entity.ArticleCategoryDTO;
 import com.lcf.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * <p>
@@ -23,7 +25,7 @@ import java.util.HashMap;
  * @since 2024-06-20
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://127.0.0.1:5173"})
 @RequestMapping("/article")
 public class ArticleController {
     @Autowired
@@ -55,6 +57,25 @@ public class ArticleController {
         }
     }
 
+    //查询所有文章
+    //更新
+    @PostMapping("/getList")
+    public Result getList(@RequestBody Article article) {
+        return articleService.updateById(article)?Result.suc():Result.fail();
+    }
+
+    @GetMapping("/allTitles")
+    public Result getAllArticleTitles() {
+        List<String> articleTitles = articleService.selectAllArticleTitles(); // 假设在Service层中声明了此方法（尽管可能不是必需的）
+        // 或者直接调用Mapper层：List<String> articleTitles = articleMapper.selectAllArticleTitles();
+        return Result.suc(articleTitles);
+    }
+
+    @GetMapping("/withCategories")
+    public Result getAllArticlesWithCategories() {
+        List<ArticleCategoryDTO> articlesWithCategories = articleService.selectArticlesWithCategories();
+        return Result.suc(articlesWithCategories);
+    }
 
     //查询
     @PostMapping("/listPage")

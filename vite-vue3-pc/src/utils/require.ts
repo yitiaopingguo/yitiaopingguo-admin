@@ -1,5 +1,5 @@
 import axios from "axios";
-let baseURL = "/api";
+let baseURL = "/";
 const service = axios.create({
   baseURL,
   timeout: 10000,
@@ -27,7 +27,7 @@ service.interceptors.response.use(
       return Promise.reject(new Error(res.success || "error"));
     } else {
       if (res.code == 200) {
-        return res.result;
+        return res;
       } else {
         alert(res.success);
       }

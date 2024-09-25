@@ -6,37 +6,19 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({
+const props = defineProps({
     msg: String,
+    categorizedArticles:Object
 })
-
+const emit = defineEmits(["articleId"]);
 const defaultProps = ref({
     children: 'children',
     label: 'label'
 })
 
-const dataTree = ref([{
-    label: '一级 1',
-    children: [{
-        label: '二级 1-1',
-    }]
-}, {
-    label: '一级 2',
-    children: [{
-        label: '二级 2-1',
-    }, {
-        label: '二级 2-2',
-    }]
-}, {
-    label: '一级 3',
-    children: [{
-        label: '二级 3-1',
-    }, {
-        label: '二级 3-2',
-    }]
-}])
+const dataTree = ref(props.categorizedArticles)
 const handleNodeClick= (data) => {
-    console.log(data);
+    emit("articleId",data.articleId)
 }
 </script>
 <style scoped>

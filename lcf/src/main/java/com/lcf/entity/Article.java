@@ -61,5 +61,8 @@ public class Article implements Serializable {
     @ApiModelProperty(value = "分类ID")
     private Integer categoryId;
 
+    @ApiModelProperty(value = "分类名称")
+    private String categoryName;
+
 
 }
